@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,42 +8,55 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="../static/css/styles.css">
 </head>
+
 <body>
-    <h1 align = center class="title">Medical Insurance Expenditure Predictor</h1>
     
-        <form method="POST" action="/predict">
-            <div class="segment">
-            <div><label><input class="field" type="number" name="age" min="18" max="90" placeholder="Age"/></label></div>            
-            <div><label><input class="field" type="number" name="bmi" min="1" placeholder="BMI"/></label></div>
-            <div> <label><input class="field" type="number" name="children" min="0" placeholder="No. of Children" /></label></div>
+
+    <form method="POST" action="/predict" class="glass">
+        <h1 align=center class="title">Medical Insurance Expenditure Predictor</h1>
+        <div class="segment">
+            <div><label><input class="field" type="number" name="age" min="18" max="90" placeholder="Age" /></label>
             </div>
-            Do you Smoke?
-            <div class="radio">                
-                <input type="radio" class="radio__input" name="smoker" value="0" id="no" /> <label class="radio-btn norad" for="no">No</label>
-                <input type="radio" class="radio__input" name="smoker" value="1" id="yes" /><label class="radio-btn yesrad" for="yes">Yes</label> 
-            </div>
+            <div><label><input class="field" type="number" name="bmi" min="1" placeholder="BMI" /></label></div>
+            <div> <label><input class="field" type="number" name="children" min="0"
+                        placeholder="No. of Children" /></label></div>
+        </div>
+        <span class="btn-title">Do you Smoke?</span>
+        <div class="radio">
+            <input type="radio" class="radio__input" name="smoker" value="0" id="no" />
+            <label class="radio-btn norad" for="no">No</label>
+            <input type="radio" class="radio__input" name="smoker" value="1" id="yes" />
+            <label class="radio-btn yesrad" for="yes">Yes</label>
+        </div>
+        <div>
+            <span class="btn-title">Gender :</span>
             <div class="gender">
-                Gender : 
-                <div>
-            <input type="radio" name="gender" value="0" />Female
-            <input type="radio" name="gender" value="1" />Male</div>
-                <div>
-                    Select the Region :
-                    <select name = "region">
-                        <option value="">Choose...</option>
-                        <option value="northeast">NorthEast</option>
-                        <option value="northwest">NorthWest</option>
-                        <option value="southeast">SouthEast</option>
-                        <option value="southwest">SouthEast</option>
-                    </select>
-                </div>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-        </form>
+                <input type="radio" class="radio__input" name="gender" value="1" id="male" />
+                <label class="radio-btn male" for="male">Male</label>
+                <input type="radio" class="radio__input" name="gender" value="0" id="female" />
+                <label class="radio-btn fem" for="female">Female</label>
+            </div>
+        </div>
+        <div class="select-wrap">
+            <div class="select-container">
+                <span class="btn-title">Select the Region :</span>
+                <select name="region" class="select-box">
+                    <option value="">Choose...</option>
+                    <option value="northeast">NorthEast</option>
+                    <option value="northwest">NorthWest</option>
+                    <option value="southeast">SouthEast</option>
+                    <option value="southwest">SouthEast</option>
+                </select>
+            </div>
+        </div>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
     <div>
         <h2> {{ pred }}</h2>
     </div>
 </body>
+
 </html>
