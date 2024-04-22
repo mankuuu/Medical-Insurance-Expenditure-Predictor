@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Expenditure Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1 align = center>Medical Insurance Expenditure Predictor</h1>
+    <div>
+        <form method="POST" action="/predict">
+            <div>Age : <input type="number" name="age" min="18" max="90" /></div>            
+            <div>BMI : <input type="number" name="bmi" min="1"/></div>
+            <div>No. of Children : <input type="number" name="children" min="0" /></div>
+            <div>
+                Do you Smoke?
+                <input type="radio" name="smoker" value="0" />No
+                <input type="radio" name="smoker" value="1" />Yes </div>
+            <div>
+                Gender : 
+            <input type="radio" name="gender" value="0" />Female
+            <input type="radio" name="gender" value="1" />Male</div>
+                <div>
+                    Select the Region :
+                    <select name = "region">
+                        <option value="">Choose...</option>
+                        <option value="northeast">NorthEast</option>
+                        <option value="northwest">NorthWest</option>
+                        <option value="southeast">SouthEast</option>
+                        <option value="southwest">SouthEast</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+        </form>
+    </div>
+    <div>
+        <h2> {{ pred }}</h2>
+    </div>
+</body>
+</html>
