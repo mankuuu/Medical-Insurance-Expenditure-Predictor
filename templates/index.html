@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Insurance Expenditure Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <h1 align = center>Medical Insurance Expenditure Predictor</h1>
-    <div>
+    <h1 align = center class="title">Medical Insurance Expenditure Predictor</h1>
+    
         <form method="POST" action="/predict">
-            <div>Age : <input type="number" name="age" min="18" max="90" /></div>            
-            <div>BMI : <input type="number" name="bmi" min="1"/></div>
-            <div>No. of Children : <input type="number" name="children" min="0" /></div>
-            <div>
-                Do you Smoke?
-                <input type="radio" name="smoker" value="0" />No
-                <input type="radio" name="smoker" value="1" />Yes </div>
-            <div>
+            <div class="segment">
+            <div><label><input class="field" type="number" name="age" min="18" max="90" placeholder="Age"/></label></div>            
+            <div><label><input class="field" type="number" name="bmi" min="1" placeholder="BMI"/></label></div>
+            <div> <label><input class="field" type="number" name="children" min="0" placeholder="No. of Children" /></label></div>
+            </div>
+            Do you Smoke?
+            <div class="radio">                
+                <input type="radio" class="radio__input" name="smoker" value="0" id="no" /> <label class="radio-btn norad" for="no">No</label>
+                <input type="radio" class="radio__input" name="smoker" value="1" id="yes" /><label class="radio-btn yesrad" for="yes">Yes</label> 
+            </div>
+            <div class="gender">
                 Gender : 
+                <div>
             <input type="radio" name="gender" value="0" />Female
             <input type="radio" name="gender" value="1" />Male</div>
                 <div>
@@ -31,11 +36,11 @@
                         <option value="southwest">SouthEast</option>
                     </select>
                 </div>
+                </div>
                 <div>
                     <button type="submit">Submit</button>
                 </div>
         </form>
-    </div>
     <div>
         <h2> {{ pred }}</h2>
     </div>
