@@ -77,6 +77,7 @@ def predict():
 
 
 
+
 if __name__ == "__main__":
     print("Running expenditure predictor flask server")
     app.run(debug = True)
