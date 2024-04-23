@@ -5,7 +5,7 @@ $color-shadow: #BABECC;
 $color-white: #FFF; */
 body, html{
     font-family: sans-serif;
-    height: 100vh;
+    height: 100%;
     /* background-color: #EBECF0; */
     /* text-decoration: ; */
     text-align: center;
@@ -91,6 +91,7 @@ input, select {
     font-weight: 600;
     padding: 1em;
     overflow: hidden;
+    text-shadow: none;
     /* text-decoration: none; */
 }
 button:hover {
@@ -108,11 +109,17 @@ button:hover {
         cursor: pointer;
         /* background-color: #009578; */
         transition: background 0.1s;
+        text-shadow: none;
         /* color: white; */
     }
 
     .radio-btn:not(:last-of-type) {
         border-right: 1px solid white;
+    }
+
+    .radio-btn:hover {
+      background: rgb(231, 231, 231);
+      color:#61677C;
     }
 
     .radio {
@@ -128,6 +135,8 @@ button:hover {
         text-align: center;
 
     }
+
+
 
     .gender {
         margin-top: 24px;
@@ -299,4 +308,18 @@ form input:hover {
   textarea:focus,
   button:focus {
     outline: none;
+  }
+
+  .result {
+    color: rgba(255,255,255,0.7);
+    text-shadow: none;  
+    font-size: larger;  
+  }
+
+  .num {
+    padding: 2px 8px 2px 8px;
+    background-color: #EBECF0;
+    color: #61677C;
+    /* border-radius: 10px; */
+    
   }

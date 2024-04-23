@@ -15,14 +15,36 @@ def home():
 
 @app.route("/predict", methods=['POST', 'GET'])
 def predict():
-    age = float(request.form.get("age"))
-    bmi = float(request.form.get("bmi"))
-    children = float(request.form.get("children"))
+    age = request.form.get("age")
+    if age == "":
+        age = float(18)
+    else :
+        age = float(age)
+    bmi = request.form.get("bmi")
+    if bmi == "":
+        bmi = float(20)
+    else :
+        bmi = float(bmi)
+    children = request.form.get("children")
+    if children =="":
+        children = float(0)
+    else :
+        children = float(children)
     numerical_data = np.array([age,bmi,children])
     scaled_num_data = scaler.transform([numerical_data])
-    smoker = float(request.form['smoker'])
-    gender = float(request.form['gender'])
+    smoker = request.form['smoker']
+    if smoker == "":
+        smoker = float(0)
+    else :
+        smoker = float(smoker)
+    gender = request.form['gender']
+    if gender == "":
+        gender = float(0)
+    else :
+        gender = float(gender)
     region = request.form['region']
+    if region == "":
+        region = "northeast"
     region = encoder.transform([[region]]).toarray()
     # print(f" Type : {type(scaled_num_data)}")
     # print(f"Type of gender : {type(gender)} and : {gender}")
@@ -43,7 +65,12 @@ def predict():
     # print(X)
     # print(f"Shape : {X.shape}")
     y = model.predict(X)
-    return render_template("index.html" , pred = y , data = X)
+    # y = y[0]
+    if y < 0 :
+        y = -y
+    # y = round(y,2)
+    res = "Your Annual Expenditure is ₹ "
+    return render_template("index.html" , res = res, pred = round(y[0],2) , data = X)
 
 
 
