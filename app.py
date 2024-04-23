@@ -15,6 +15,7 @@ def home():
 
 @app.route("/predict", methods=['POST', 'GET'])
 def predict():
+    name = request.form.get("name")
     age = request.form.get("age")
     if age == "":
         age = float(18)
@@ -45,6 +46,7 @@ def predict():
     region = request.form['region']
     if region == "":
         region = "northeast"
+    region_copy = region
     region = encoder.transform([[region]]).toarray()
     # print(f" Type : {type(scaled_num_data)}")
     # print(f"Type of gender : {type(gender)} and : {gender}")
@@ -69,8 +71,9 @@ def predict():
     if y < 0 :
         y = -y
     # y = round(y,2)
-    res = "Your Annual Expenditure is ₹ "
-    return render_template("index.html" , res = res, pred = round(y[0],2) , data = X)
+    flag = 1
+    res = f"Hello {name} , Your Annual Expenditure is ₹ "
+    return render_template("result.html" , res = res, pred = round(y[0],2) , name = name , age = int(age) , bmi = bmi , children = int(children) , smoker = smoker , gender = gender , region = region_copy, flag = flag)
 
 
 
